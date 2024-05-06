@@ -23,7 +23,7 @@ function Login() {
       const authDataString = localStorage.getItem("auth");
       const data = authDataString ? JSON.parse(authDataString) : null;
       if (data) {
-        router.push("/")
+        router.push("/");
       }
     };
 
@@ -45,13 +45,11 @@ function Login() {
       });
       return;
     }
-    const { data } = await login(email)
+    const { data } = await login(email);
     console.log(data);
-    localStorage.setItem("auth",JSON.stringify(data))
-    window.location.reload()
+    localStorage.setItem("auth", JSON.stringify(data));
+    window.location.reload();
   };
-
-
 
   return (
     <div>
@@ -63,7 +61,7 @@ function Login() {
           >
             Please Sign In to see the logs 👋🏼
           </Label>
-          <Label>Please enter your email to continue</Label>
+          <Label>Please enter any email to continue</Label>
           <Input
             onChange={(e) => setEmail(e.target.value)}
             className="md:w-64 md:h-10 border-black"
