@@ -4,13 +4,15 @@ This is the parent directory of the project. You can see two different repositor
 
 To start both the client and server, let's begin with the server. Navigate to the server repository and create the new .env file and paste content from .env.development file. After completing this step, follow the instructions below. Update: just for demo purposes, I already loaded the .env file for convenience.
 
-## Installation
+## Server Installation
 
 ```bash
+$ cd server
+
 $ npm install
 ```
 
-## Running the app
+## Running the server
 
 ```bash
 # development

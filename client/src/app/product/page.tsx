@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import Image from "next/image";
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
 import { getAllProducts, getUserDetail, updateProd } from "../../services/api";
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 interface LogData {
   _id: string;
   oldValue: {
@@ -37,76 +37,87 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
 
 export default function Product() {
   const router = useRouter();
 
-  const [products, setProducts] = useState<any[]>([]); 
+  const [products, setProducts] = useState<any[]>([]);
   const [product, setProduct] = useState<any>(null);
 
-  const [token, setToken] = useState<{} | null>(null)
+  const [token, setToken] = useState<{} | null>(null);
 
-  const [productUpdateDialog, setProductUpdateDialog] = useState(false)
+  const [productUpdateDialog, setProductUpdateDialog] = useState(false);
 
-  const [productName, setProductName] = useState<string | null>(null)
-  const [price, setPrice] = useState<string | null>(null)
-  const [desc, setDesc] = useState<string | null>(null)
-  const [offer, setOffer] = useState<string | null>(null)
+  const [productName, setProductName] = useState<string | null>(null);
+  const [price, setPrice] = useState<string | null>(null);
+  const [desc, setDesc] = useState<string | null>(null);
+  const [offer, setOffer] = useState<string | null>(null);
 
   useEffect(() => {
     if (token) {
       const fetchData = async () => {
-        const { data }: any = await getAllProducts(token)
-        setProducts(data)
-      }
+        const { data }: any = await getAllProducts(token);
+        setProducts(data);
+      };
       fetchData();
     } else {
       const authDataString = localStorage.getItem("auth");
       const data = authDataString ? JSON.parse(authDataString) : null;
       if (data) {
-        setToken(data.access_token)
+        setToken(data.access_token);
       } else {
-        router.push("/login")
+        router.push("/login");
       }
     }
-
-  }, [router, token])
-
+  }, [router, token]);
 
   const updateProductHandler = async (data: any) => {
-    setProductUpdateDialog(true)
-    setProduct(data)
-  }
+    setProductUpdateDialog(true);
+    setProduct(data);
+  };
   const updateProduct = async () => {
     let oldValue = {
       productName: product.productName,
       price: product.price,
       description: product.description,
-      offer: product.offer
-    }
-    await updateProd(product._id, productName ? productName : product.productName, price ? price : product.price, desc ? desc : product.description, offer ? offer : product.offer, product, token)
-    window.location.reload()
-  }
+      offer: product.offer,
+    };
+    await updateProd(
+      product._id,
+      productName ? productName : product.productName,
+      price ? price : product.price,
+      desc ? desc : product.description,
+      offer ? offer : product.offer,
+      product,
+      token
+    );
+    window.location.reload();
+  };
   return (
     <main className="container flex flex-row  bg-slate-600">
       <div className="container  h-screen ">
         <div className="mt-10  p-8">
           <div className="flex flex-row justify-between items-center mb-4 ">
             <h1 className="text-lg font-bold text-white p-2 uppercase">
-              Logs will be display here
+              Logs will be displayed here
             </h1>
             <div className="flex flex-row items-center gap-2">
               <Button
-                onClick={() => { router.push("/") }}
+                onClick={() => {
+                  router.push("/");
+                }}
                 variant="default"
                 className="bg-green-500 hover:bg-green-600 text-white"
               >
                 View The Logs
               </Button>
               <Button
-                onClick={() => { localStorage.clear(); window.location.reload() }}
+                onClick={() => {
+                  localStorage.clear();
+                  window.location.reload();
+                }}
                 variant="default"
                 className=""
               >
@@ -151,13 +162,17 @@ export default function Product() {
                         <p className="text-xs opacity-80">{data?._id}</p>
                       </td>
                       <td className="border justify-center text-white border-white/20 w-3 text-center">
-                        <p className="text-xs opacity-80">{data?.productName}</p>
+                        <p className="text-xs opacity-80">
+                          {data?.productName}
+                        </p>
                       </td>
                       <td className="border justify-center text-white border-white/20 w-3 text-center">
                         <p className="text-xs opacity-80">{data?.price}</p>
                       </td>
                       <td className="border justify-center text-white border-white/20 w-3 text-center">
-                        <p className="text-xs opacity-80">{data?.description}</p>
+                        <p className="text-xs opacity-80">
+                          {data?.description}
+                        </p>
                       </td>
                       <td className="flex flex-row border-r border-b border-white/20 gap-4 justify-center text-center p-3 items-center">
                         <Button
@@ -187,7 +202,9 @@ export default function Product() {
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Update Product</DialogTitle>
-            <DialogDescription>Click on save when you are done</DialogDescription>
+            <DialogDescription>
+              Click on save when you are done
+            </DialogDescription>
           </DialogHeader>
           <div className="flex items-center space-x-4">
             <div className="grid gap-4 py-4">

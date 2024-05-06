@@ -1,5 +1,5 @@
-"use client"
-import { Button } from "@/components/ui/button"
+"use client";
+import { Button } from "@/components/ui/button";
 
 import { useEffect, useState } from "react";
 import { getAllLogs, getUserDetail } from "../services/api";
@@ -34,66 +34,69 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
 
-  const [logData, setLogData] = useState([])
-  const [token, setToken] = useState(null)
-  const [logDialog, setLogDialog] = useState(false)
-  const [userDetailsDialog, setUserDetailsDialog] = useState(false)
+  const [logData, setLogData] = useState([]);
+  const [token, setToken] = useState(null);
+  const [logDialog, setLogDialog] = useState(false);
+  const [userDetailsDialog, setUserDetailsDialog] = useState(false);
   const [viewLog, setViewLog] = useState<LogData | null>(null);
   const [userDetails, setUserDetails] = useState<UserData | null>(null);
   useEffect(() => {
     if (token) {
       const fetchData = async () => {
-        const { data }: any = await getAllLogs(token)
-        setLogData(data)
-      }
+        const { data }: any = await getAllLogs(token);
+        setLogData(data);
+      };
       fetchData();
     } else {
       const authDataString = localStorage.getItem("auth");
       const data = authDataString ? JSON.parse(authDataString) : null;
       if (data) {
-        setToken(data.access_token)
+        setToken(data.access_token);
       } else {
-
-        router.push("/login")
+        router.push("/login");
       }
     }
-
-  }, [router, token])
+  }, [router, token]);
   const viewLogs = async (data: any) => {
-    setLogDialog(true)
-    setViewLog(data)
-  }
+    setLogDialog(true);
+    setViewLog(data);
+  };
   const getUserDetails = async (user: string) => {
     const fetchData = async () => {
-      const { data }: any = await getUserDetail(user,token)
-      setUserDetails(data)
-    }
+      const { data }: any = await getUserDetail(user, token);
+      setUserDetails(data);
+    };
     fetchData();
-    setUserDetailsDialog(true)
-  }
+    setUserDetailsDialog(true);
+  };
   return (
     <main className="container flex flex-row  bg-slate-600">
       <div className="container  h-screen ">
         <div className="mt-10  p-8">
           <div className="flex flex-row justify-between items-center mb-4 ">
             <h1 className="text-lg font-bold text-white p-2 uppercase">
-              Logs will be display here
+              Logs will be displayed here
             </h1>
             <div className="flex flex-row items-center gap-2">
               <Button
-                onClick={() => { router.push('/product') }}
+                onClick={() => {
+                  router.push("/product");
+                }}
                 variant="default"
                 className="bg-green-500 hover:bg-green-600 text-white"
               >
-                Manage Product
+                Manage Products
               </Button>
               <Button
-                onClick={() => { localStorage.clear(); window.location.reload() }}
+                onClick={() => {
+                  localStorage.clear();
+                  window.location.reload();
+                }}
                 variant="default"
                 className=""
               >
@@ -164,23 +167,41 @@ export default function Home() {
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>The logs are here</DialogTitle>
-            <DialogDescription>Click on close when you are done</DialogDescription>
+            <DialogDescription>
+              Click on close when you are done
+            </DialogDescription>
           </DialogHeader>
           <div className="flex items-center space-x-4">
             <div className="flex-1">
               <h2 className="text-lg font-bold text-black">Old Value</h2>
-              <p className="text-xs opacity-80">Product Name: {viewLog?.oldValue?.productName}</p>
-              <p className="text-xs opacity-80">Price: {viewLog?.oldValue?.price}</p>
-              <p className="text-xs opacity-80">Description: {viewLog?.oldValue?.description}</p>
-              <p className="text-xs opacity-80">Offer: {viewLog?.oldValue?.offer}</p>
+              <p className="text-xs opacity-80">
+                Product Name: {viewLog?.oldValue?.productName}
+              </p>
+              <p className="text-xs opacity-80">
+                Price: {viewLog?.oldValue?.price}
+              </p>
+              <p className="text-xs opacity-80">
+                Description: {viewLog?.oldValue?.description}
+              </p>
+              <p className="text-xs opacity-80">
+                Offer: {viewLog?.oldValue?.offer}
+              </p>
             </div>
             <span className="text-2xl text-black mt-4">⇒</span>
             <div className="flex-1">
               <h2 className="text-lg font-bold text-balck">New Value</h2>
-              <p className="text-xs opacity-80">Product Name: {viewLog?.newValue?.productName}</p>
-              <p className="text-xs opacity-80">Price: {viewLog?.newValue?.price}</p>
-              <p className="text-xs opacity-80">Description: {viewLog?.newValue?.description}</p>
-              <p className="text-xs opacity-80">Offer: {viewLog?.newValue?.offer}</p>
+              <p className="text-xs opacity-80">
+                Product Name: {viewLog?.newValue?.productName}
+              </p>
+              <p className="text-xs opacity-80">
+                Price: {viewLog?.newValue?.price}
+              </p>
+              <p className="text-xs opacity-80">
+                Description: {viewLog?.newValue?.description}
+              </p>
+              <p className="text-xs opacity-80">
+                Offer: {viewLog?.newValue?.offer}
+              </p>
             </div>
           </div>
           <DialogFooter>
@@ -198,21 +219,29 @@ export default function Home() {
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>The logs are here</DialogTitle>
-            <DialogDescription>Click on close when you are done</DialogDescription>
+            <DialogDescription>
+              Click on close when you are done
+            </DialogDescription>
           </DialogHeader>
           <div className="flex items-center space-x-4">
             <div className="flex-1">
-              <h2 className="text-lg font-bold text-balck mb-10">User Information</h2>
-              <p className="text-lg opacity-80">User Email:<span className="font-bold ml-2">
-                {userDetails?.email}</span></p>
-              <p className="text-lg opacity-80">User ID:
-                <span className="font-bold ml-2">
-                  {userDetails?._id}
-                </span>
+              <h2 className="text-lg font-bold text-balck mb-10">
+                User Information
+              </h2>
+              <p className="text-lg opacity-80">
+                User Email:
+                <span className="font-bold ml-2">{userDetails?.email}</span>
               </p>
-              <p className="text-lg opacity-80">Registered At:
+              <p className="text-lg opacity-80">
+                User ID:
+                <span className="font-bold ml-2">{userDetails?._id}</span>
+              </p>
+              <p className="text-lg opacity-80">
+                Registered At:
                 <span className="font-bold ml-2">
-                  {userDetails?.createdAt ? new Date(userDetails.createdAt).toLocaleString() : ''}
+                  {userDetails?.createdAt
+                    ? new Date(userDetails.createdAt).toLocaleString()
+                    : ""}
                 </span>
               </p>
             </div>
