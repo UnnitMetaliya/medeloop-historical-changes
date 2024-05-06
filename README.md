@@ -37,3 +37,12 @@ $ npm install
 ```bash
 $ npm run dev
 ```
+
+## Notes About the App
+
+You can add any email to enter into the application.
+I have allowed my Atlas MongoDB to be accessed from anywhere. So, you will be populated with remote data from my database.
+I have already created a product collection in database.
+You can update any product and see the logs.
+It will show its last value and current value its update with.
+It will also have user details.
