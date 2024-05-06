@@ -46,3 +46,7 @@ $ npm run dev
 - You can update any product and see the logs.
 - It will show its last value and current value its updated with.
 - It will also have user details.
+
+## Postman API Collection
+
+- please take a look at the HCS.postman_collection.json file in the root folder. You can import the file in your postman and test the API.

@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "2d7eae3d-e28d-4b38-803b-9dae3b24ccd9",
+		"name": "HCS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16704448"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Update product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM0YzFmZjdkN2MwNjY4YjUxNjBkOTkiLCJ1c2VybmFtZSI6ImFrYXNoa3JndXB0YTAzQGdtYWlsLmNvbSIsImlhdCI6MTcxNDczNDgzNywiZXhwIjoxNzE1MzM5NjM3fQ.TBXJjiFWfa2ViIQBOSeSEWCJDBlS-4SWMlcv0WWv0tc",
+								"uuid": "346866b8-e118-4b59-9ec5-f0a73957e73e"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"6634b7138c875213b6eb397e\",\n    \"productName\": \"Pink Oranger\",\n    \"price\": 200,\n    \"description\": \"this is orange\",\n    \"offer\": \"\",\n    \"oldValue\": {\n        \"productName\": \"orange\",\n        \"price\": 2,\n        \"description\": \"this is orange\",\n        \"offer\": \"\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/product/update",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM0YzFmZjdkN2MwNjY4YjUxNjBkOTkiLCJ1c2VybmFtZSI6ImFrYXNoa3JndXB0YTAzQGdtYWlsLmNvbSIsImlhdCI6MTcxNDczNDgzNywiZXhwIjoxNzE1MzM5NjM3fQ.TBXJjiFWfa2ViIQBOSeSEWCJDBlS-4SWMlcv0WWv0tc",
+								"uuid": "1f3370e1-c7f5-427e-a35a-c878b2cae89c"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\": \"Tomato\",\n    \"price\": 1504,\n    \"description\": \"tomato is fruit as well\",\n    \"offer\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/product",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM0YzFmZjdkN2MwNjY4YjUxNjBkOTkiLCJ1c2VybmFtZSI6ImFrYXNoa3JndXB0YTAzQGdtYWlsLmNvbSIsImlhdCI6MTcxNDczNDgzNywiZXhwIjoxNzE1MzM5NjM3fQ.TBXJjiFWfa2ViIQBOSeSEWCJDBlS-4SWMlcv0WWv0tc",
+								"uuid": "5434a770-b031-4e62-a2cd-b00205c771f0"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3999/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3999",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"unnitjmetaliya@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/user/auth/sign-in",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user",
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SignIn",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"unnitjmetaliya@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3999/user/auth/sign-in",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3999",
+									"path": [
+										"user",
+										"auth",
+										"sign-in"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-gmcOnP3HAR1AM7vx4tqpdQA481Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 04 May 2024 06:49:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 422,\n    \"data\": \"secretOrPrivateKey must have a value\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM0YzFmZjdkN2MwNjY4YjUxNjBkOTkiLCJ1c2VybmFtZSI6ImFrYXNoa3JndXB0YTAzQGdtYWlsLmNvbSIsImlhdCI6MTcxNDczNDgzNywiZXhwIjoxNzE1MzM5NjM3fQ.TBXJjiFWfa2ViIQBOSeSEWCJDBlS-4SWMlcv0WWv0tc",
+								"uuid": "a3b8e223-d8dc-4444-a52f-b2a9426b0bd9"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/user/auth/data/?id=6634c1ff7d7c0668b5160d99",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user",
+								"auth",
+								"data",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6634c1ff7d7c0668b5160d99"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logs",
+			"item": [
+				{
+					"name": "Get Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM0YzFmZjdkN2MwNjY4YjUxNjBkOTkiLCJ1c2VybmFtZSI6ImFrYXNoa3JndXB0YTAzQGdtYWlsLmNvbSIsImlhdCI6MTcxNDczNDgzNywiZXhwIjoxNzE1MzM5NjM3fQ.TBXJjiFWfa2ViIQBOSeSEWCJDBlS-4SWMlcv0WWv0tc",
+								"uuid": "2ad41e13-5f18-4b7d-b183-bf43b755b5b7",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{local}}/product/logs",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get the server health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}",
+					"host": [
+						"{{local}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
