@@ -13,7 +13,7 @@ export class MongoDBLoggerService implements ChangeLogger {
   }
 
   async logChange(oldValue: any, newValue: any, userId: string): Promise<void> {
-    const db = this.mongoClient.db('hcs');
+    const db = this.mongoClient.db('hcsm');
     const changeLogCollection = db.collection('change_logs');
     if (userId && oldValue) {
       await changeLogCollection.insertOne({
@@ -25,7 +25,7 @@ export class MongoDBLoggerService implements ChangeLogger {
     }
   }
   async getLogs(): Promise<any[]> {
-    const db = this.mongoClient.db('hcs');
+    const db = this.mongoClient.db('hcsm');
     const changeLogCollection = db.collection('change_logs');
     return await changeLogCollection.find().toArray();
   }
