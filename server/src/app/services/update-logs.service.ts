@@ -12,7 +12,6 @@ export class UpdateLogsService {
   ) {}
   async updateProduct(product: any) {
     try {
-      // console.log(product);
       const response = await this.productModel.updateOne(
         { _id: product._id },
         {

@@ -46,7 +46,6 @@ export class ProductController {
     @Res() res: Response,
   ): Promise<any> {
     try {
-      console.log(product);
       const productObj = await this.productService.createProduct(product);
       return this.sendCustomResponse(res, HttpStatus.CREATED, productObj);
     } catch (error) {

@@ -64,7 +64,6 @@ export class AuthController {
     @Query('id') id: string,
   ): Promise<Response> {
     try {
-      console.log(id);
       const result: any = await this.service.getUser(id);
       return this.sendCustomResponse(res, HttpStatus.OK, result);
     } catch (error) {
